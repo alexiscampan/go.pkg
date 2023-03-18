@@ -1,0 +1,18 @@
+---
+blacklist:
+  - GPL-2.0
+  - GPL-3.0
+
+whitelist:
+  - Apache-2.0
+  - BSD
+  - FreeBSD
+  - CC
+  - ISC
+  - MIT
+  - MPL-2.0
+  - NewBSD
+  - BSD-1-Clause
+  - BSD-2-Clause
+  - BSD-3-Clause
+  - BSD-4-Clause
