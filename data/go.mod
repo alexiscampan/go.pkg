@@ -1,4 +1,4 @@
-module github.com/alexiscampan/go.pkg/http
+module github.com/alexiscampan/go.pkg/data
 
 go 1.19
 

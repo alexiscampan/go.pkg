@@ -1,4 +1,4 @@
-module github.com/alexiscampan/go.pkg/http
+module github.com/alexiscampan/go.pkg/port-scanner
 
 go 1.19
 
