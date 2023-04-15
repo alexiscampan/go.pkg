@@ -47,7 +47,6 @@ func Build() error {
 			continue
 		}
 		os.Chdir(filepath.Join(workingDir, module))
-		fmt.Println(os.Getwd())
 		color.Blue("Module \"%s\" found ✅", module)
 		err := Tidy()
 		if err != nil {

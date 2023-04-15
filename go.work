@@ -6,4 +6,6 @@ use (
     ./http
     ./log
     ./mqtt
+    ./data
+    ./port-scanner
 )
