@@ -5,10 +5,10 @@ import (
 	"bytes"
 	"encoding/csv"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 
-	"github.com/alexiscampan/go.pkg/log"
 	"go.uber.org/zap"
 )
 
@@ -18,11 +18,11 @@ func AsCSVBuf(entry []string) (bytes.Buffer, error) {
 	writer := csv.NewWriter(&buffer)
 	err := writer.Write(entry)
 	if err != nil {
-		log.Bg().Fatal("Entry data incompatible type", zap.Error(err))
+		log.Fatal("Entry data incompatible type", zap.Error(err))
 	}
 	writer.Flush()
 	if err := writer.Error(); err != nil {
-		log.Bg().Fatal("Cannot write to buffer", zap.Error(err))
+		log.Fatal("Cannot write to buffer", zap.Error(err))
 	}
 	return buffer, nil
 }
@@ -38,7 +38,7 @@ func ToCSVFile(buf bytes.Buffer, filename string) error {
 		}
 	}()
 	if err != nil {
-		log.Bg().Fatal("Cannot create file ", zap.Error(err))
+		log.Fatal("Cannot create file ", zap.Error(err))
 	}
 	_, err = f.Write(buf.Bytes())
 	if err != nil {
