@@ -38,7 +38,7 @@ func ToCSVFile(buf bytes.Buffer, filename string) error {
 		}
 	}()
 	if err != nil {
-		log.Fatal("Cannot create file ", zap.Error(err))
+		log.Panic("Cannot create file ", zap.Error(err))
 	}
 	_, err = f.Write(buf.Bytes())
 	if err != nil {
