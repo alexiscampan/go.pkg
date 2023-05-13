@@ -10,24 +10,16 @@ import (
 	"net"
 	"net/http"
 	"time"
-
-	"github.com/alexiscampan/go.pkg/log"
-	"go.uber.org/zap"
 )
 
 const (
 	// ConnectMaxWaitTime to have a connection limit time
 	ConnectMaxWaitTime = 20 * time.Second
-	// RequestMaxWaitTime to have a request limit time
-	RequestMaxWaitTime = 300 * time.Second
 )
 
 // GetQuery to send Get http request
 func GetQuery(ctx context.Context, url string, params, headers map[string]string) (resp []byte, err error) {
 	client := initClient()
-
-	ctx, cancel := context.WithTimeout(ctx, RequestMaxWaitTime)
-	defer cancel()
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, http.NoBody)
 	if err != nil {
@@ -59,16 +51,13 @@ func GetQuery(ctx context.Context, url string, params, headers map[string]string
 		return nil, fmt.Errorf("failed to read response from %q: %w", url, err)
 	}
 	endRead := time.Now()
-	log.For(ctx).Info("Read response took: %s", zap.String("time", endRead.Sub(startRead).String()))
-
+	fmt.Printf("Read response took: %s", endRead.Sub(startRead).String())
 	return resp, err
 }
 
 // PostQuery to send Post http request
 func PostQuery(ctx context.Context, url string, body []byte, params, headers map[string]string) (respCode int, err error) {
 	client := initClient()
-	ctx, cancel := context.WithTimeout(ctx, RequestMaxWaitTime)
-	defer cancel()
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, bytes.NewBuffer(body))
 	if err != nil {
