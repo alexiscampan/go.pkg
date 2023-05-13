@@ -17,9 +17,9 @@ import (
 
 const (
 	// ConnectMaxWaitTime to have a connection limit time
-	ConnectMaxWaitTime = 1 * time.Second
+	ConnectMaxWaitTime = 20 * time.Second
 	// RequestMaxWaitTime to have a request limit time
-	RequestMaxWaitTime = 5 * time.Second
+	RequestMaxWaitTime = 300 * time.Second
 )
 
 // GetQuery to send Get http request
